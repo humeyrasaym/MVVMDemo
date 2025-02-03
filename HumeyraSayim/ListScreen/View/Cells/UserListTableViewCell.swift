@@ -10,17 +10,13 @@ import UIKit
 class UserListTableViewCell: UITableViewCell {
     
     //MARK: - UI Elements
-    
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     
     //MARK: - Properties
-    
     private var model: ListModel?
     static var height: CGFloat = UITableView.automaticDimension
-
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +29,7 @@ class UserListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /// Configures the cell with user data
     func setupData(userName: String?, useremail: String?) {
         emailLabel.text = useremail
         nameLabel.text = userName

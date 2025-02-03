@@ -45,6 +45,7 @@ class DetailViewController: UIViewController {
         
     }
     
+    /// Updates UI elements with user data from ViewModel
     func setupUI() {
         nameLabel?.text = viewModel?.userdata?.userName
         mailLabel?.text = viewModel?.userdata?.userEmail

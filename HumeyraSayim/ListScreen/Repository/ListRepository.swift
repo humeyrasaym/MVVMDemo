@@ -12,8 +12,9 @@ class ListRepository {
     
     //MARK: - Properties
     private var networkManager: NetworkManager? = NetworkManager()
-
+    
     func execute(completionHandler: @escaping ((Result<[ListModel],Error>) -> Void)) {
+        /// Fetch the user list using the network manager
         networkManager?.fetchUserList { result in
             switch result {
             case .success(let users):
@@ -22,7 +23,7 @@ class ListRepository {
                 completionHandler(.failure(error))
             }
         }
-       
+        
     }
 }
 

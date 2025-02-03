@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        
+        /// changed the main vc and main storyboard
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "ListViewController", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController
         window.rootViewController = UINavigationController(rootViewController: viewController ?? UIViewController())

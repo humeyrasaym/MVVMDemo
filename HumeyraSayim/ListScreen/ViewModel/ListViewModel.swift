@@ -12,6 +12,7 @@ protocol ListViewModel {
     /// List of users
     var userList: [ListModel]? { get }
     
+    /// The repository used to fetch data
     var repository: ListRepository? { get set }
     
     /// checks if the data operations done or not for updating ui elements
@@ -38,6 +39,7 @@ class DefaultListViewModel: ListViewModel {
     
     var didFinishWithError: ( () -> Void )?
     
+    /// Call the repository to fetch data
     func fetchData() {
         repository?.execute { [weak self] result in
                     switch result {

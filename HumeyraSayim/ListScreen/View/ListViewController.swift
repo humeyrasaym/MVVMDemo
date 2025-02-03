@@ -10,9 +10,9 @@ import UIKit
 class ListViewController: ViewController {
     
     //MARK: - Properties
-    /// view model
     var viewModel = DefaultListViewModel()
     
+    //MARK: - UI Elements
     @IBOutlet weak var listTableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,11 +20,11 @@ class ListViewController: ViewController {
         
         setupUI()
         viewModelSubscription()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        /// Fetch user data every time the view appears
         self.viewModel.fetchData()
     }
     
@@ -34,7 +34,6 @@ class ListViewController: ViewController {
         
         listTableView.delegate = self
         listTableView.dataSource = self
-        
         listTableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
         
     }
@@ -52,13 +51,13 @@ class ListViewController: ViewController {
     }
     
     func setupUserListCell(username: String?, usermail: String?) -> UITableViewCell {
-        // Dequeue a reusable cell as an instance of ProductDetailNameCell for the given index path.
+        /// Dequeue a reusable cell as an instance of ProductDetailNameCell for the given index path
         let cell = listTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as? UserListTableViewCell
         
-        // Configure the cell with the provided product details.
+        /// Configure the cell with the provided product details
         cell?.setupData(userName: username, useremail: usermail)
         
-        // Return the cell, or a new UITableViewCell if the cell is nil.
+        /// Return the cell, or a new UITableViewCell if the cell is nil
         return cell ?? UITableViewCell()
     }
 }
@@ -81,9 +80,8 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedUser = viewModel.userList?[indexPath.row]
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "DetailViewController", bundle: nil)
-        let detailVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-        //let detailVC = DetailViewController()
+        let detailStoryboard: UIStoryboard = UIStoryboard(name: "DetailViewController", bundle: nil)
+        let detailVC = detailStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
         detailVC?.viewModel = DefaultDetailViewModel(userId: selectedUser?.userId ?? 0)
         
         self.navigationController?.pushViewController(detailVC!, animated: true)
