@@ -1,4 +1,6 @@
-# Project Description
+# MVVM Demo
+
+## Project Description
 
 HümeyraSayım is an iOS application developed using the MVVM architecture and the Repository pattern. The app retrieves user data from an API and displays it in a list format. Upon selecting a user, detailed information such as name, email, phone number, and website is displayed on a separate screen.
 
@@ -18,7 +20,7 @@ JSON Parsing with Codable
 
 Storyboard & Programmatic UI
 
-#Features
+## Features
 
 Fetch and display a list of users
 
@@ -26,7 +28,7 @@ Navigate to a detail screen with user-specific information
 
 Efficient state management with ViewModel
 
-#How to Run the Project
+## How to Run the Project
 
 Clone the repository:
 
